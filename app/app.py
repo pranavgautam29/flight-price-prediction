@@ -3,10 +3,6 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
-import plotly.express as px
-
-# import dataset
-df = pd.read_csv("D:\\flight-price-prediction\\data\\Clean_Dataset.csv")
 
 # load the model using joblib
 model_path = "D:\\flight-price-prediction\\models\\DecisionTreeRegressor.pkl"
@@ -22,19 +18,19 @@ st.write("(Open sidebar to enter flight details.)")
 # take input from user
 def get_user_input():
     st.sidebar.header("Please enter your flight details.")
-    airline = st.sidebar.selectbox("Select Airline", list(df["airline"].unique()))
-    source_city = st.sidebar.selectbox("Your City", list(df["source_city"].unique()))
-    departure_time = st.sidebar.selectbox("Enter Departure Time", list(df["departure_time"].unique()))
-    stops = st.sidebar.selectbox("Select Stops", list(df["stops"].unique()))
-    arrival_time = st.sidebar.selectbox("Enter Arrival Time", list(df["arrival_time"].unique()))
-    destination_city = st.sidebar.selectbox("Enter destination", list(df["destination_city"].unique()))
+    airline = st.sidebar.selectbox("Select Airline", ['SpiceJet', 'AirAsia', 'Vistara', 'GO_FIRST', 'Indigo', 'Air_India'])
+    source_city = st.sidebar.selectbox("Your City", ['Delhi','Mumbai','Bangalore','Kolkata','Hyderabad','Chennai'])
+    departure_time = st.sidebar.selectbox("Enter Departure Time", ['Evening','Early_Morning','Morning','Afternoon','Night','Late_Night'])
+    stops = st.sidebar.selectbox("Select Stops", ['zero', 'one', 'two_or_more'])
+    arrival_time = st.sidebar.selectbox("Enter Arrival Time", ['Night', 'Morning', 'Early_Morning', 'Afternoon', 'Evening', 'Late_Night'])
+    destination_city = st.sidebar.selectbox("Enter destination", ['Mumbai', 'Bangalore', 'Kolkata', 'Hyderabad', 'Chennai', 'Delhi'])
     if airline in ["Air_India", "Vistara"]:
         class_type = st.sidebar.selectbox("Enter Class", ["Economy", "Business"])
     else:
         class_type = st.sidebar.selectbox("Enter Class", ["Economy"])
-    duration = st.sidebar.slider("Enter Flight Duration (hours)", min_value=df["duration"].min(),
-                                 max_value=df["duration"].max(), step=0.1)
-    days_left = st.sidebar.slider("Days left to fly", min_value=df["days_left"].min(), max_value=df["days_left"].max(),
+    duration = st.sidebar.slider("Enter Flight Duration (hours)", min_value=0.83,
+                                 max_value=49.83, step=0.1)
+    days_left = st.sidebar.slider("Days left to fly", min_value=1, max_value=49,
                                   step=1)
 
     data = {
