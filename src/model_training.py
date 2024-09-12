@@ -9,7 +9,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error, mean_squared_error
-from data_preprocess import clean_data
+from data_preprocess import clean_data, subset_data
+from sklearn.ensemble import RandomForestRegressor
 import joblib
 
 
@@ -41,11 +42,13 @@ def train_and_evaluate_model(data_path):
     models = {
         "LinearRegression": LinearRegression(),
         "DecisionTreeRegressor": DecisionTreeRegressor(),
-        "XGBRegressor": XGBRegressor()
+        "XGBRegressor": XGBRegressor(),
+        "RandomForestRegressor": RandomForestRegressor()
 
     }
 
     df = clean_data(data_path)
+    df = subset_data(df)
     X = df.drop(columns="price")
     y = df["price"]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
@@ -89,4 +92,5 @@ def select_best_model(results):
 if __name__ == "__main__":
     path = "D:\\flight-price-prediction\\data\\Clean_Dataset.csv"
     results = train_and_evaluate_model(path)
+    print(results)
     best_pipeline = select_best_model(results)

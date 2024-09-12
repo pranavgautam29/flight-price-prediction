@@ -6,7 +6,6 @@ from sklearn.preprocessing import OrdinalEncoder, LabelEncoder
 
 # load the data
 def clean_data(data_path):
-
     # get the data using read_csv
     df = pd.read_csv(data_path)
 
@@ -20,4 +19,18 @@ def clean_data(data_path):
     df = df.drop(high_cardinality_feature, axis=1)
 
     return df
+
+
+def subset_data(df):
+    """
+
+    :param df: takes input dataframe
+    :return: returns a dataframe free from outliers
+    """
+
+    ninty_fifth = df["price"].quantile(0.95)
+
+    df = df[df["price"] <= ninty_fifth]
+    return df
+
 
