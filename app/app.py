@@ -1,11 +1,14 @@
 # import essential libraries and modules
+import os.path
+
 import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
 
 # load the model using joblib
-model_path = "D:\\flight-price-prediction\\models\\DecisionTreeRegressor.pkl"
+root = os.path.dirname(os.getcwd())
+model_path = os.path.join(root,'models','DecisionTreeRegressor.pkl')
 model = joblib.load(model_path)
 
 # Web app UI
