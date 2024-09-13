@@ -7,7 +7,7 @@ import joblib
 import numpy as np
 
 # load the model using joblib
-model_path = 'model.pkl'
+model_path = 'app/model.pkl'
 model = joblib.load(model_path)
 
 # Web app UI
