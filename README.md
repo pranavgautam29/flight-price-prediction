@@ -1,5 +1,5 @@
 # Cloud Fare 
-This app is currently running on: [cloudfare.streamlit.app](cloudfare.streamlit.app)
+This app is currently running on: <a href="cloudfare.streamlit.app">cloudfare.streamlit.app</a>
 
 Cloud Fare is a machine learning application that uses statistical machine learning models to predict flight prices.
 This project leverages historical flight prices data of major Indian airlines in order to predict future flight prices.
@@ -34,6 +34,6 @@ streamlit run app/app.py
 ```
 
 # Usage and Deployment
-Access the live version of this application here [cloudfare.streamlit.app](cloudfare.streamlit.app). Input your flight details and get the approximate prediction for fare by clocking on Predict Price button.
+Access the live version of this application here <a href="cloudfare.streamlit.app">cloudfare.streamlit.app</a>. Input your flight details and get the approximate prediction for fare by clocking on Predict Price button.
 
 This app is hosted on an open source python framework called [Streamlit](https://streamlit.io/) and deployed on a free deployment service [Streamlit Cloud](https://streamlit.io/cloud)
