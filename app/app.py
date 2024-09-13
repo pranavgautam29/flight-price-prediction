@@ -7,8 +7,7 @@ import joblib
 import numpy as np
 
 # load the model using joblib
-root = os.path.dirname(os.getcwd())
-model_path = os.path.join(root,'models','DecisionTreeRegressor.pkl')
+model_path = 'model.pkl'
 model = joblib.load(model_path)
 
 # Web app UI
